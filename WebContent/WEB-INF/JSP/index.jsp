@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
+<!doctype html>
 <html lang='nl'>
 <head>
-<meta charset='UTF-8'>
 <title>Pizza Luigi</title>
 <link rel='icon' href='images/favicon.ico'>
 <meta name='viewport' content='width=device-width,initial-scale=1'>
@@ -10,5 +10,6 @@
 <body>
 	<h1>Pizza Luigi</h1>
 	<img src='images/pizza.jpg' alt='pizza' class='fullwidth'>
+	<h2>${begroeting}</h2>
 </body>
 </html>
