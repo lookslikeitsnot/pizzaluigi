@@ -16,20 +16,28 @@ import be.vdab.entities.Persoon;
 /**
  * Servlet implementation class IndexServlet
  */
-@WebServlet("/index.htm")
+@WebServlet(urlPatterns = "/index.htm", name = "indexservlet")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/index.jsp";
 	private final AtomicInteger aantalKeerBekeken = new AtomicInteger();
+	private static final String INDEX_REQUESTS = "indexRequests";
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		((AtomicInteger) this.getServletContext().getAttribute(INDEX_REQUESTS)).incrementAndGet();
 		request.setAttribute("aantalKeerBekeken", aantalKeerBekeken.incrementAndGet());
+		// request.setAttribute("emailAdresWebMaster",
+		// this.getServletContext().getInitParameter("emailAdresWebMaster"));
 		request.setAttribute("begroeting", new Begroeting());
-		request.setAttribute("zaakvoerder", new Persoon("Luigi", "Peperone", 7, true,
-				new Adres("Grote markt", "3", 9700, "Oudenaarde")));
+		request.setAttribute("zaakvoerder",
+				new Persoon("Luigi", "Peperone", 7, true, new Adres("Grote markt", "3", 9700, "Oudenaarde")));
 		request.getRequestDispatcher(VIEW).forward(request, response);
-		
+	}
+
+	@Override
+	public void init() throws ServletException {
+		this.getServletContext().setAttribute(INDEX_REQUESTS, new AtomicInteger());
 	}
 }
