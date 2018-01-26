@@ -22,7 +22,11 @@
 				&euro; ${pizza.pikant ? "pikant" : "niet pikant"} <c:url
 					value='/pizzas/detail.htm' var='detailURL'>
 					<c:param name='id' value="${pizza.id}" />
-				</c:url> <a href="<c:out value='${detailURL}'/>">Detail</a>
+				</c:url> <a href="<c:out value='${detailURL}'/>">Detail</a> <c:if
+					test='${pizzaIdsMetFoto.contains(pizza.id)}'>
+					<c:url value='/pizzafotos/${pizza.id}.jpg' var='fotoURL' />
+					<a href='${fotoURL}'>Foto</a>
+				</c:if>
 			</li>
 		</c:forEach>
 	</ul>
