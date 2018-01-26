@@ -8,7 +8,6 @@ public class Pizza {
 	private BigDecimal prijs;
 	private boolean pikant;
 
-	// je maakt getters voor alle private variabelen
 	public Pizza(String naam, BigDecimal prijs, boolean pikant) {
 		setNaam(naam);
 		setPrijs(prijs);
@@ -26,22 +25,6 @@ public class Pizza {
 
 	public void setPikant(boolean pikant) {
 		this.pikant = pikant;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public String getNaam() {
-		return naam;
-	}
-
-	public BigDecimal getPrijs() {
-		return prijs;
-	}
-
-	public boolean isPikant() {
-		return pikant;
 	}
 
 	public static boolean isNaamValid(String naam) { // Deze static function
@@ -65,5 +48,21 @@ public class Pizza {
 			throw new IllegalArgumentException();
 		}
 		this.prijs = prijs;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public String getNaam() {
+		return naam;
+	}
+
+	public BigDecimal getPrijs() {
+		return prijs;
+	}
+
+	public boolean isPikant() {
+		return pikant;
 	}
 }
