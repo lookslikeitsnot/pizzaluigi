@@ -21,9 +21,14 @@
 				Pikant
 			</label>
 		</div>
-		<label>Foto<span>${fouten.foto}</span>
-			<input type='file' name='foto'></label>
-		<input type='submit' value='Toevoegen' id='toevoegknop'>
+		<label>Foto<span>${fouten.foto}</span> <input type='file'
+			name='foto'></label> <input type='submit' value='Toevoegen'
+			id='toevoegknop'>
 	</form>
+	<script>
+		document.getElementById('toevoegform').onsubmit = function() {
+			document.getElementById('toevoegknop').disabled = true;
+		};
+	</script>
 </body>
 </html>
