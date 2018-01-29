@@ -7,4 +7,8 @@
 		<param-name>emailAdresWebMaster</param-name>
 		<param-value>joske.vermeulen@vdab.be</param-value>
 	</context-param>
+	<session-config>
+		<session-timeout>20</session-timeout> <!-- 20 minuten -->
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
 </web-app>
