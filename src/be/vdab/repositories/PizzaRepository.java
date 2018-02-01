@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import be.vdab.entities.Pizza;
 
@@ -18,7 +20,9 @@ public class PizzaRepository extends AbstractRepository {
 	private static final String READ = BEGIN_SELECT + "where id=?";
 	private static final String FIND_BY_PRIJS_BETWEEN = BEGIN_SELECT + "where prijs between ? and ? order by prijs";
 	private static final String CREATE = "insert into pizzas(naam, prijs, pikant) values (?, ?, ?)";
-
+	private final static Logger LOGGER =
+			Logger.getLogger(PizzaRepository.class.getName());
+	
 	public List<Pizza> findAll() {
 		try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement()) {
 			List<Pizza> pizzas = new ArrayList<>();
@@ -32,6 +36,7 @@ public class PizzaRepository extends AbstractRepository {
 			connection.commit();
 			return pizzas;
 		} catch (SQLException ex) {
+			LOGGER.log(Level.SEVERE, "Probleem met database pizzaluigi", ex);
 			throw new RepositoryException(ex);
 		}
 	}
@@ -58,6 +63,7 @@ public class PizzaRepository extends AbstractRepository {
 			connection.commit();
 			return pizza;
 		} catch (SQLException ex) {
+			LOGGER.log(Level.SEVERE, "Probleem met database pizzaluigi", ex);
 			throw new RepositoryException(ex);
 		}
 	}
@@ -78,6 +84,7 @@ public class PizzaRepository extends AbstractRepository {
 			connection.commit();
 			return pizzas;
 		} catch (SQLException ex) {
+			LOGGER.log(Level.SEVERE, "Probleem met database pizzaluigi", ex);
 			throw new RepositoryException(ex);
 		}
 	}
@@ -97,6 +104,7 @@ public class PizzaRepository extends AbstractRepository {
 			}
 			connection.commit();
 		} catch (SQLException ex) {
+			LOGGER.log(Level.SEVERE, "Probleem met database pizzaluigi", ex);
 			throw new RepositoryException(ex);
 		}
 	}
