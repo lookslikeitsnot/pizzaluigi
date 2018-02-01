@@ -17,6 +17,10 @@ public class IdentificatieServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String locale = request.getParameter("locale");
+		if (locale != null) {
+		request.getSession().setAttribute("locale", locale);
+		}
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			String gebruikersnaam = (String) session.getAttribute("gebruikersnaam");
