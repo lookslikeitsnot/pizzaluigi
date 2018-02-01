@@ -4,9 +4,7 @@
 <!doctype html>
 <html lang='nl'>
 <head>
-<c:import url='/WEB-INF/JSP/head.jsp'>
-	<c:param name='title' value="Voorkeurpizza’s" />
-</c:import>
+	<vdab:head title='Voorkeurpizza’s'/>
 </head>
 <body>
 	<vdab:menu/>
